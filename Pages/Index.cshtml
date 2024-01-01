@@ -1,0 +1,54 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Strona główna";
+}
+
+<style>
+    .page-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+
+        .page-background img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+    .home-container {
+        margin: 0 auto;
+        max-width: 600px;
+        padding: 20px;
+        background-color: rgba(88, 88, 88, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        color: #000000;
+        margin-bottom: 20px;
+    }
+
+        .home-container h1 {
+            color: #ffffff;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .home-container p {
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+</style>
+
+<div class="page-background">
+    <img src="~/images/bus_asset.png" />
+</div>
+
+<div class="home-container">
+    <h1>Witaj na Transitify!</h1>
+    <p>Nasza strona oferuje wygodne narzędzia do zarządzania biletami. Możesz tutaj dodawać bilety, opłacać je oraz aktywować. Po aktywacji, będziesz miał możliwość wyświetlenia kodu QR, który będzie Cię identyfikować podczas korzystania z biletu.</p>
+</div>

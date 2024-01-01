@@ -1,0 +1,128 @@
+﻿@page
+@model Transitify.Pages.Account.RegisterModel
+@{
+    ViewData["Title"] = "Rejestracja";
+}
+
+<style>
+    .page-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+
+        .page-background img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+    .form-with-background {
+        padding: 20px;
+        background-color: rgba(88, 88, 88, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+        .form-with-background label {
+            color: #ffffff;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-with-background input,
+        .form-with-background button {
+            background-color: rgba(122, 122, 122, 0.8);
+            color: #ffffff;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 12px;
+            font-size: 14px;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .form-with-background .text-danger {
+            color: red;
+            font-weight: bold;
+        }
+
+        .form-with-background h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .form-with-background button {
+            background-color: #0056b3;
+            color: #ffffff;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+            .form-with-background button:hover {
+                background-color: #007bff;
+            }
+</style>
+
+<div class="page-background">
+    <img src="~/images/metro_map.png" />
+</div>
+
+<form method="post" class="form-with-background">
+    @if (Model.IsRegistrationSuccessful)
+    {
+        <div class="alert alert-success" role="alert">
+            Rejestracja przebiegła pomyślnie. Przejdź teraz do okna z logowaniem.
+            <a asp-area="" asp-page="/Account/Login" class="alert-link">Zaloguj się!</a>
+        </div>
+    }
+    <h1>Rejestracja</h1>
+    <div class="form-group">
+        <label asp-for="Name">Imię</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Surname">Nazwisko</label>
+        <input asp-for="Surname" class="form-control" />
+        <span asp-validation-for="Surname" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Username">Nazwa użytkownika</label>
+        <input asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password">Hasło</label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RepeatPassword">Powtórz hasło</label>
+        <input asp-for="RepeatPassword" type="password" class="form-control" />
+        <span asp-validation-for="RepeatPassword" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Zarejestruj się</button>
+</form>
+
+<script>
+    @if (Model.IsRegistrationSuccessful)
+    {
+        <text>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('input').forEach(function (input) {
+                input.value = '';
+            });
+        });
+        </text>
+    }
+</script>
